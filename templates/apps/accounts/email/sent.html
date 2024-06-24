@@ -1,0 +1,27 @@
+
+{% extends "base/base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %} | {% translate "Email verification" %}  {% endblock title %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static '' %}">
+{% endblock head %}
+
+{% block content %}
+    <main>
+        <section>
+            <article class="content-card main-content">
+                <div class="main-context">
+                    <h1> {% translate "Email verification" %} </h1>
+                    <p> {% translate "We’ve emailed you instructions for email verification, You should receive them shortly." %} </p>
+                    <p> {% translate "If you don’t receive an email, please make sure you’ve entered the address you registered with, and check your spam folder." %} </p>
+                </div>
+            </article>
+        </section>
+    </main>
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}

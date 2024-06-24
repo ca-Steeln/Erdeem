@@ -1,0 +1,33 @@
+
+{% extends "base/base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %} | Transactions {% endblock title %}
+
+{% block head %}
+{% endblock head %}
+
+{% block auth_nav %}
+{% endblock auth_nav %}
+
+{% block content %}
+    <main>
+        <section class="content-area">
+            <div class="main-context">
+                <h2 class="main"> <span> {% translate "Transactions" %} </span> </h2>
+
+                {% if transactions_qs %}
+                    <ul>
+                        {% include "apps/transactions/partials/transactions-list.html" %}
+                    </ul>
+                {% else %}
+                    <p> {% translate "It appears that no transactions were found or made yet." %} </p>
+                {% endif %}
+
+            </div>
+
+        </section>
+    </main>
+
+{% endblock content %}

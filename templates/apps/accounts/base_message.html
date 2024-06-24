@@ -1,0 +1,14 @@
+
+{% load i18n %}
+{% autoescape off %}
+    <h2> {% blocktranslate with site_name=current_site.name %} Greetings, As a member of {{ site_name }}, you're receiving this message. {% endblocktranslate %} </h2>
+
+    {% block content %}
+    {% endblock content %}
+
+    <h3>{% translate "Thanks for using our site!" %}</h3>
+    <h3>{% blocktranslate with site_name=current_site.name %} The {{ site_name }} team {% endblocktranslate %}</h3>
+{% endautoescape %}
+
+
+

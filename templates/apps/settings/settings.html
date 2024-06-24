@@ -1,0 +1,44 @@
+
+{% extends "base/base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %} {% translate "Settings" %} {% endblock title %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static '' %}">
+{% endblock head %}
+
+{% block content %}
+    <main>
+        <section class="main-section">
+            <h3>{% translate "Account Settings" %}</h3>
+            <ul>
+                <li> <a href="{% url 'settings:account' %}"> {% translate "Personal and Account Information" %} </a> </li>
+                <li> <a href="{% url 'settings:security' %}"> {% translate "Password and Security" %} </a> </li>
+                <li> <a href="{% url 'settings:payments' %}"> {% translate "Payments" %} </a> </li>
+            </ul>
+
+            <h3>{% translate "Profile Settings" %}</h3>
+            <ul>
+                <li> <a href="{% url 'settings:profile' %}"> {% translate "Edit Profile" %} </a> </li>
+                <li> <a href="{% url 'settings:privacy' %}"> {% translate "Privacy and Profile Information" %} </a> </li>
+            </ul>
+
+            <h3>{% translate "Preferences Settings" %}</h3>
+            <ul>
+                <li> <a href="{% url 'settings:theme' %}"> {% translate "Theme" %} </a> </li>
+                <li> <a href="{% url 'settings:locale' %}"> {% translate "Language and region" %} </a> </li>
+                <li> <a href="{% url 'settings:notifications' %}"> {% translate "Notifications" %} </a> </li>
+            </ul>
+
+            <h3>{% translate "Community and Policies" %}</h3>
+            <ul>
+
+            </ul>
+        </section>
+    </main>
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}

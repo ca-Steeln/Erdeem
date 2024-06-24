@@ -1,0 +1,118 @@
+
+{% load i18n %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head hx-head="merge">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% comment %} <meta name="description" content="Algerian freelancers platform" hx-preserve="true">
+    <meta name="keywords" content="freewise , freelance , freelancers , job , work , developers">
+
+    <meta property="og:image" content="{% static '' %}">
+    <meta property="og:image:width" content="1600">
+    <meta property="og:image:hright" content="900">
+    <meta property="og:site_name" content="Freewise"> {% endcomment %}
+
+
+    <title> Erdeem {% block title %}{% endblock title %} </title>
+    <link href="{% static 'alerts/toasts.css' %}" rel="stylesheet" type="text/css" hx-preserve="true">
+
+    {% block head %}
+    {% endblock head %}
+
+    {#} static sripts {#}
+    <script src="https://unpkg.com/htmx.org/dist/htmx.js" hx-preserve="true" defer></script>
+    <script src="https://unpkg.com/htmx.org@1.9.10/dist/htmx.min.js" hx-preserve="true" defer></script>
+    <script src="https://unpkg.com/htmx.org/dist/ext/head-support.js" hx-preserve="true" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" hx-preserve="true" defer></script>
+
+    <link href="{% static 'base/base.css' %}" rel="stylesheet" type="text/css" hx-preserve="true">
+    <script src="{% static "base/config.js" %}" hx-preserve="true" defer></script>
+    <script src="{% static 'alerts/toasts.js' %}" hx-preserve="true" defer></script>
+
+</head>
+<body hx-ext="head-support" hx-boost="true">
+    <header>
+        {% if user.is_authenticated %}
+            <h3>User: {{request.user.username}} </h3>
+        {% endif %}
+
+        {#} Staff navigation {#}
+        {% if user.is_staff %}
+            <nav>
+                <a href="{% url 'pages:base' %}" class="nav-link"> Base </a>
+                <a href="/admin/django/" class="nav-link"> django </a>
+                {% block staff_nav %}
+                {% endblock staff_nav %}
+            </nav>
+        {% endif %}
+
+        {#} General navigation {#}
+        <nav>
+            <a href="{% url 'pages:home' %}" class="nav-link"> Home </a>
+            <a href="{% url 'pages:about' %}" class="nav-link"> about </a>
+            {% block general_nav %}
+            {% endblock general_nav %}
+        </nav>
+
+        {#} Authentication navigation {#}
+        <nav>
+            {% if user.is_authenticated %}
+
+                <a href="{{user.account.get_absolute_url}}" class="nav-link"> <span> {% translate "Profile" %} </span></a>
+                <a href="{% url 'wallets:wallet' %}" class="nav-link"> <span> {% translate "Wallet" %} </span></a>
+                <a href="{% url 'transactions:transactions' %}" class="nav-link"> <span> {% translate "Transactions" %} </span></a>
+                <a href="{% url 'settings:settings' %}" class="nav-link"> <span> {% translate "Settings" %} </span></a>
+                {% block auth_nav %}{% endblock auth_nav %}
+
+            {% elif user.is_anonymous %}
+                {% block anon_nav %}{% endblock anon_nav %}
+            {% endif %}
+        </nav>
+
+        {#} Registration navigation {#}
+        <nav>
+            {% if user.is_authenticated %}
+                <a href="{% url 'account_logout' %}" class="nav-link"> <span> Sign Out </span></a>
+            {% elif user.is_anonymous %}
+                <a href="{% url 'account_signup' %}" class="nav-link"> <span> Sign Up </span></a>
+                <a href="{% url 'account_login' %}" class="nav-link"> <span> Sign In </span></a>
+            {% endif %}
+        </nav>
+
+        <div class="htmx-indicator" id="pageload-indicator" hx-preserve="true"></div>
+    </header>
+
+    {% include 'alerts/toasts.html' %}
+
+    {% block content %}
+    {% endblock content %}
+
+    <script>
+        document.body.addEventListener("htmx:configRequest", (e)=>{
+            e.detail.headers['X-CSRFToken'] = '{{ csrf_token }}'
+        })
+    </script>
+
+    <script src="{% static "base/base.js" %}" defer></script>
+
+    {% block scripts %}
+    {% endblock scripts %}
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,27 @@
+
+{% extends "base/base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %} {% translate "Language and region Settings" %} {% endblock title %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static '' %}">
+{% endblock head %}
+
+{% block content %}
+    <main>
+        <section class="main-section">
+
+            <form action="{% url 'settings:locale' %}" method="post">
+
+                {{form.locale}}
+                <button type="submit"> {% translate "Save" %} </button>
+            </form>
+
+        </section>
+    </main>
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}

@@ -1,0 +1,38 @@
+
+
+{% extends "base/base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %} | {% translate "Deposit Balance" %}  {% endblock title %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static '' %}">
+
+{% endblock head %}
+
+{% block auth_nav %}
+    <a href="{% url 'wallets:withdrawal' %}" name="withdraw balance"> {% translate "Withdraw" %} </a>
+    <a href="{% url 'wallets:send' %}" name="Send balance"> {% translate "Send" %} </a>
+
+{% endblock auth_nav %}
+
+{% block content %}
+    <section class="main-section">
+        <h1>{% translate "Deposit" %} </h1>
+
+        <form action="{% url 'wallets:deposit' %}" method="post">
+            {% csrf_token %}
+            {{form.currency}}
+            {{form.amount}}
+            {{form.payment_method}}
+            {{form.description}}
+
+            <button name="Deposit" type="submit"> {% translate "Deposit" %} </button>
+            {% include "indicators/form.html" %}
+        </form>
+    </section>
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}

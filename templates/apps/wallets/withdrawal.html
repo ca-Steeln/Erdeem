@@ -1,0 +1,52 @@
+
+
+{% extends "base/base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %} | {% translate "Balance withdrawal" %}  {% endblock title %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static '' %}">
+
+{% endblock head %}
+
+{% block auth_nav %}
+    <a href="{% url 'wallets:deposit' %}" name="deposit balance"> {% translate "Deposit" %} </a>
+    <a href="{% url 'wallets:send' %}" name="Send balance"> {% translate "Send" %} </a>
+{% endblock auth_nav %}
+
+{% block content %}
+    <section class="main-section">
+        <h1>{% translate "Withdraw" %} </h1>
+
+        <form action="{% url 'wallets:withdrawal' %}" method="post">
+            {% csrf_token %}
+            <label for="{{form.balance.id_for_label}}"> Balances: </label>
+
+            {{form.balance}}
+            {% if amounted_balances_qs %}
+                {{form.balance}}
+            {% else %}
+                <p id="{{form.balance.id_for_label}}"> Balances appear to be empty. You may need to top up a balance to make this transaction.</p>
+            {% endif %}
+
+
+            <label for="{{form.amount.id_for_label}}"></label>
+            {{form.amount}}
+
+            <label for="{{form.withdrawal_destination.id_for_label}}"></label>
+            {{form.withdrawal_destination}}
+
+            <label for="{{form.description.id_for_label}}"></label>
+            {{form.description}}
+
+            <button name="Deposit" type="submit"> {% translate "Withdraw" %}  </button>
+            {% include "indicators/form.html" %}
+        </form>
+
+    </section>
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}

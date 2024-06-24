@@ -1,0 +1,23 @@
+
+{% extends "base/base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %} | {% translate "Exception" %}  {% endblock title %}
+
+{% block head %}
+{% endblock head %}
+
+{% block content %}
+    <main>
+        <section class="content-area">
+            <h1>403 Forbidden</h1>
+            <p>{% translate "Sorry, you don't have permission to access this page." %}</p>
+        </section>
+    </main>
+
+{% endblock content %}
+
+
+{% block scripts %}
+{% endblock scripts %}

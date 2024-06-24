@@ -1,0 +1,27 @@
+
+{% include 'apps/recaptcha/api.html' %}
+
+<script type="text/javascript">
+
+    function recaptchaLoadedCallback (){
+        var element
+
+        grecaptcha.ready(function() {
+            element = document.querySelector('.g-recaptcha[data-widget-uuid="{{ widget_uuid }}"]');
+            element.form.addEventListener('htmx:confirm', recaptchaFormSubmit);
+        });
+        function recaptchaFormSubmit(event) {
+            event.preventDefault();
+
+            {% if action %}
+                grecaptcha.execute('{{ public_key }}', {action: '{{ action|escape }}'})
+            {% else %}
+                grecaptcha.execute('{{ public_key }}', {})
+            {% endif %}
+            .then(function(token) {
+                element.value = token;
+                event.detail.issueRequest();
+            });
+        }
+    }
+</script>

@@ -1,0 +1,12 @@
+
+{% extends "apps/accounts/base_message.html" %}
+{% load i18n %}
+
+{% block content %}
+
+    <p>{% blocktranslate with site_name=current_site.name site_domain=current_site.domain %} Registration request received, confirm your account using this email {{ site_domain }}.{% endblocktranslate %}</p>
+
+    <p>{% translate 'If this action was initiated by you, please proceed to confirm your email address by clicking the "Verify Email" below:' %}</p>
+    <a href="{{ activate_url }}" class="success-mail-btn"> {% translate "Verify Email" %} </a>
+
+{% endblock content %}

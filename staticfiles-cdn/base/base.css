@@ -1,0 +1,108 @@
+
+
+/* indicators */
+
+#pageload-indicator {
+    --uib-size: 100%;
+    --uib-color: black;
+    --uib-speed: 2s;
+    --uib-stroke: 2px;
+    --uib-bg-opacity: .2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--uib-stroke);
+    width: var(--uib-size);
+    border-radius: calc(var(--uib-stroke) / 2);
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+}
+#pageload-indicator::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--uib-color);
+    opacity: var(--uib-bg-opacity);
+    transition: background-color 300ms ease;
+}
+#pageload-indicator::after {
+    content: '';
+    height: 100%;
+    width: 100%;
+    border-radius: calc(var(--uib-stroke) / 2);
+    animation: wobble var(--uib-speed) ease-in-out infinite;
+    transform: translateX(-95%);
+    background-color: var(--uib-color);
+    transition: background-color 300ms ease;
+}
+
+#form-indicator {
+    --uib-size: 2rem;
+    --uib-color: black;
+    --uib-speed: 600ms;
+    --uib-bg-opacity: 0.1;
+    height: var(--uib-size);
+    width: var(--uib-size);
+    transform-origin: center;
+    animation: rotate var(--uib-speed) linear infinite;
+    will-change: transform;
+    overflow: visible;
+    transition: 200ms ease;
+}
+#form-indicator .car {
+    fill: none;
+    stroke: var(--uib-color);
+    stroke-dasharray: 25, 75;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+    transition: stroke 400ms ease;
+}
+#form-indicator .track {
+    fill: none;
+    stroke: var(--uib-color);
+    opacity: var(--uib-bg-opacity);
+    transition: stroke 400ms ease;
+}
+
+
+.htmx-indicator {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 800ms ease-in;
+}
+
+.htmx-request .htmx-indicator{
+    opacity:1;
+    visibility: visible;
+    transition: all 80ms ease-in;
+    animation-play-state: running;
+}
+
+.htmx-request.htmx-indicator{
+    opacity:1;
+    visibility: visible;
+    transition: all 80ms ease-in;
+    animation-play-state: running;
+}
+
+
+
+
+@keyframes wobble {
+    0%,
+    100% {
+      transform: translateX(-95%);
+    }
+    50% {
+      transform: translateX(95%);
+    }
+}
+@keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+}

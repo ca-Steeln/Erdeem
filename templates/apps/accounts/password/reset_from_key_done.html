@@ -1,0 +1,14 @@
+
+{% extends "base/base.html" %}
+{% load i18n %}
+{% load allauth %}
+
+{% block title %} {% translate "Change Password Completed!" %} {% endblock title %}
+{% block head %}
+{% endblock head %}
+
+
+{% block content %}
+    <h2>{% translate "Change Password" %}</h2>
+    <p>{% translate 'Password has been changed successfully!' %}</p>
+{% endblock content %}

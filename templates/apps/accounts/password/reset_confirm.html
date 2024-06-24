@@ -1,0 +1,46 @@
+
+{% extends "base/base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %} | {% translate "Confirm a new password" %} {% endblock title %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'apps/pages/reset_confirm.css' %}">
+{% endblock head %}
+
+{% block content %}
+
+    <main>
+        <section>
+            <article class="content-card main-content">
+
+                <h1> {% translate "Confirm a new password" %} </h1>
+                {% if form %}
+
+                    <div class="main-context">
+                        <p> {% translate "Please enter your new password." %} </p>
+                    </div>
+
+                    <form action="." method="post">
+                        {% csrf_token %}
+                        {% include "indicators/htmx.html" %}
+                        {{ form.as_p }}
+                        <button type="submit"><span class="context"> {% translate "Confirm" %} </span></button>
+                    </form>
+
+                {% else %}
+                    <div class="main-context">
+                        <p> {% translate "The password reset link was invalid, possibly because it has already been used. Please request a new password reset." %}</p>
+                    </div>
+                {% endif %}
+
+            </article>
+        </section>
+    </main>
+
+
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}

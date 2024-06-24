@@ -1,0 +1,50 @@
+
+
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %} | Checkout {% endblock title %}
+
+{% block head %}
+{% endblock head %}
+
+{% block content %}
+    <main>
+        <section class="content-area">
+            <article class="content-card main-content">
+                <div class="main-context">
+                    <p class="main"> <span>Checkout Details</span> </p>
+
+                    {% if object.amount %}
+                        <h2>{{object.amount}}</h2>
+                    {% elif object.currency %}
+
+                        <h2>{{object.currency.name}} - {{object.currency.code}} - {{object.currency.symbol}}</h2>
+                        <h3>{{object.quantity}}</h3>
+                        <h3>Price in DZD: {{object.currency.amount}}</h3>
+
+                    {% endif %}
+
+                    {% if object.status == 'PENDING' %}
+                        <a href="{{object.checkout_url}}"> Payment </a>
+                    {% endif %}
+
+                    <p>{{object.status}}</p>
+                    <p>{{object.payment_method}}</p>
+                    <p>{{object.payment_currency}}</p>
+                    <p>{{object.note}}</p>
+
+                    <p>{{object.created_at}}</p>
+                    <p>{{object.updated_at}}</p>
+
+                </div>
+            </article>
+        </section>
+    </main>
+
+
+{% endblock content %}
+
+
+{% block scripts %}
+{% endblock scripts %}

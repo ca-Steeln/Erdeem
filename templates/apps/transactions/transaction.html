@@ -1,0 +1,44 @@
+
+
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %} | Transaction {% endblock title %}
+
+{% block head %}
+{% endblock head %}
+
+{% block content %}
+    <main>
+        <section class="content-area">
+            <article class="content-card main-content">
+                <div class="main-context">
+                    <p class="main"> <span>Transaction Details</span> </p>
+
+                    <h3>ID: {{ object.id }}</h3>
+                    <h4>Type: {{object.get_transaction_type_display }}</h4>
+
+                    <h4>Amount Spend: {{ object.amount }}</h4>
+                    <h4>Curreny: {{ object.currency }}</h4>
+
+                    <h4>Status: {{ object.get_status_display }}</h4>
+                    {% for name, method in object.get_relevant_info.items %}
+                        <h4>{{ name }}: {{ method }}</h4>
+                    {% endfor %}
+
+                    {% if object.description %}
+                        <p>Description: {{ object.description }}</p>
+                    {% endif %}
+                    <p>Date Created: {{object.created_at}}</p>
+
+                </div>
+            </article>
+        </section>
+    </main>
+
+
+{% endblock content %}
+
+
+{% block scripts %}
+{% endblock scripts %}

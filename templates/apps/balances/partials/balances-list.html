@@ -1,0 +1,4 @@
+
+{% for balance in balances_qs %}
+    <li> <a href="{{balance.get_absolute_url}}"> <p>Currency: {{balance.currency}} Amount: {{balance.amount}}</p></a></li>
+{% endfor %}

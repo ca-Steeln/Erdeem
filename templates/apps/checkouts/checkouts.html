@@ -1,0 +1,45 @@
+
+
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %} | Checkouts {% endblock title %}
+
+{% block head %}
+{% endblock head %}
+
+{% block auth_nav %}
+    <a href="{% url 'checkouts:create' %}" class="nav-link"> <span> Create Checkout </span></a>
+{% endblock auth_nav %}
+
+{% block content %}
+    <main>
+        <section class="content-area">
+            <div class="main-context">
+                <h2 class="main"> <span>Checkouts</span> </h2>
+
+                <form action="." method="GET">
+                    <button> Get Balance </button>
+                </form>
+
+                {% if qs %}
+                    <ul>
+                        {% for object in qs %}
+                            <li> <a href="{{object.get_absolute_url}}">{{object}}</a> </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p> It appears that no checkouts were found </p>
+                {% endif %}
+
+            </div>
+
+        </section>
+    </main>
+
+
+{% endblock content %}
+
+
+{% block scripts %}
+{% endblock scripts %}

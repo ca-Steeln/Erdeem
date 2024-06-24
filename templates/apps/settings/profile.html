@@ -1,0 +1,27 @@
+
+{% extends "base/base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %} {% translate "Edit Profile Settings" %} {% endblock title %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static '' %}">
+{% endblock head %}
+
+{% block content %}
+    <main>
+        <section class="main-section">
+            <form action="{% url 'settings:profile' %}" method="post">
+
+                {{form.avatar}}
+                {{form.name}}
+                {{form.description}}
+                <button type="submit" name="save-data"> {% translate "Save" %} </button>
+            </form>
+        </section>
+    </main>
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}

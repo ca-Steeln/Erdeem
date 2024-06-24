@@ -1,0 +1,8 @@
+
+{% load i18n %}
+
+<form action="{% url 'settings:session_language' %}" method="post">
+    {% csrf_token %}
+    {{ language_form.language_preference }}
+    <button type="submit">{% translate 'Confirm' %}</button>
+</form>

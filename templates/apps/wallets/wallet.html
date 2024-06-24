@@ -1,0 +1,49 @@
+
+
+{% extends "base/base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %} | {% translate "Wallet" %}  {% endblock title %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static '' %}">
+{% endblock head %}
+
+{% block general_nav %}
+    <a href="{% url 'balances:balances' %}"> {% translate "Balances" %} </a>
+{% endblock general_nav %}
+
+{% block content %}
+    <section class="main-section">
+        <h1>{% translate "Wallet" %} </h1>
+        <p>Total Balance as (USD): {{ object.total_balance_as_usd }}</p>
+        <p>Total Balance as (DZD): {{ object.total_balance_as_dzd }}</p>
+
+        <a href="{% url 'wallets:deposit' %}" name="deposit balance"> {% translate "Deposit" %} </a>
+        <a href="{% url 'wallets:withdrawal' %}" name="withdraw balance"> {% translate "Withdraw" %} </a>
+        <a href="{% url 'wallets:send' %}" name="Send balance"> {% translate "Send" %} </a>
+
+        <h2> Latest Updated Balances </h2>
+        {% if balances_qs %}
+            <ul>
+                {% include "apps/balances/partials/balances-list.html" %}
+            </ul>
+        {% else %}
+            <p> {% translate "It appears that there are no active actions in your balances or they're empty." %} </p>
+        {% endif %}
+
+        <h2> Recent Transactions </h2>
+        {% if transactions_qs %}
+            <ul>
+                {% include "apps/transactions/partials/transactions-list.html" %}
+            </ul>
+        {% else %}
+            <p> {% translate "It appears that no transactions were found or made yet." %} </p>
+        {% endif %}
+
+    </section>
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}

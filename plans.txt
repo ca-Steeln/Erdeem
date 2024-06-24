@@ -1,0 +1,22 @@
+
+- Main Navigation
+Home
+
+Trade
+    Browse Trades
+    Post a Trade
+    P2P Trades
+    Trade History
+
+Wallet
+    My Wallet
+    Checkouts
+
+Help
+    FAQ
+    Contact Support
+    Guides
+--
+
+
+

@@ -1,0 +1,25 @@
+
+{% extends "base/base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %} {% translate "Password and Security Settings" %} {% endblock title %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static '' %}">
+{% endblock head %}
+
+{% block content %}
+    <main>
+        <section class="main-section">
+
+            <ul>
+                <li> <a href="{% url 'account_change_password' %}"> {% translate "Change Password" %} </a> </li>
+            </ul>
+
+        </section>
+    </main>
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}

@@ -1,0 +1,26 @@
+
+
+
+{% extends "base/base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %} | {% translate "Exception" %}  {% endblock title %}
+
+{% block head %}
+{% endblock head %}
+
+{% block content %}
+    <main>
+        <section class="content-area">
+            <h1>403 Forbidden</h1>
+            <p>Page verification failed or expired. Reason: {{ reason }}</p>
+        </section>
+    </main>
+
+
+{% endblock content %}
+
+
+{% block scripts %}
+{% endblock scripts %}

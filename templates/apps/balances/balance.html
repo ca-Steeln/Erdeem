@@ -1,0 +1,31 @@
+
+{% extends "base/base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %} | {{object.code}} {% translate "Balance" %} {% endblock title %}
+
+{% block head %}
+{% endblock head %}
+
+{% block auth_nav %}
+{% endblock auth_nav %}
+
+{% block content %}
+    <main>
+        <section class="content-area">
+            <div class="main-context">
+                <h2 class="main"> <span> {{object.code}} {% translate "Balance" %} </span> </h2>
+
+                <p>icon: <img src="{{object.currency.image.url}}" style="width:150px;" alt="Currency Icon"> </p>
+                <p>Currency: {{object.currency.code}}</p>
+                <p>Amount: {{object.amount}}</p>
+                <p>Last activity Date: {{object.updated_at}}</p>
+
+            </div>
+
+
+        </section>
+    </main>
+
+{% endblock content %}

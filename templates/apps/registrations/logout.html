@@ -1,0 +1,27 @@
+
+{% extends "base/base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %} {% translate "Sign Out" %}  {% endblock title %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static '' %}">
+{% endblock head %}
+
+{% block content %}
+
+    <section class="main-section">
+        <h2> {% translate "Sign Out Page" %} </h2>
+        <form action="{% url 'account_logout' %}" method="post">
+            {% csrf_token %}
+            {% include "indicators/form.html" %}
+            <p> {% translate "Are sure you want to sign out?" %} </p>
+            <button  name="logout" type="submit" hx-disabled-elt="this"> {% translate "Sign Out" %} </button>
+
+        </form>
+    </section>
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}

@@ -1,0 +1,21 @@
+
+
+<div data-toast-container class="toast-container" id="toast-container" hx-preserve="true" hx-disable>
+    <div data-toast-template class="toast fade-out" role="alert">
+        <div data-toast-body class="toast-body" aria-label="Context"></div>
+        <button close-msg-btn type="button" aria-label="Close" hx-trigger="close-message">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+
+
+    {% comment %} {% for message in messages %}
+        <div class="toast fade-out {{message.tags}}" role="alert" hx-preserve="true">
+            <div data-toast-body class="toast-body" aria-label="Context" hx-preserve="true">
+                {{message.message}}
+            </div>
+            <button close-msg-btn type="submit" aria-label="Close"></button>
+        </div>
+    {% endfor %} {% endcomment %}
+
+</div>

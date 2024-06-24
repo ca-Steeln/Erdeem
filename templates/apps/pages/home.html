@@ -1,0 +1,31 @@
+
+{% extends "base/base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %} {% translate "Introduction" %}  {% endblock title %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'apps/pages/home.css' %}">
+{% endblock head %}
+
+{% block content %}
+    <main>
+        <section class="main-section">
+            <article>
+                <h1> {% translate "Home" %} </h1>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, eius iure, rem inventore ducimus tempora amet totam iusto esse sint omnis, voluptas beatae voluptatum dolorum molestiae delectus veritatis voluptatibus perspiciatis?
+                </p>
+            </article>
+            <form action="." method="post">
+                {% csrf_token %}
+                {% include "indicators/form.html" %}
+                <button>Submit</button>
+            </form>
+        </section>
+    </main>
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}

@@ -1,0 +1,36 @@
+
+{% extends "base/base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %} | {% translate "Change Password" %} {% endblock title %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'apps/accounts/password/change.css' %}">
+{% endblock head %}
+
+{% block content %}
+
+    <main>
+        <section>
+            <article class="content-card main-content">
+
+                <h1> {% translate "Chnage to a new password" %} </h1>
+
+                    <form action="." method="post">
+                        {% csrf_token %}
+                        {{ form.oldpassword }}
+                        {{ form.password1 }}
+                        {{ form.password2 }}
+                        <button type="submit"><span class="context"> {% translate "Change" %} </span></button>
+                    </form>
+
+            </article>
+        </section>
+    </main>
+
+
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}

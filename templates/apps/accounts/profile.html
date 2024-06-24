@@ -1,0 +1,35 @@
+
+{% extends "base/base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %} | {{object.member.username}} {% translate "Profile" %} {% endblock title %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static '' %}">
+{% endblock head %}
+
+{% block auth_nav %}
+    {% if user.account == object %}
+        <a href="{% url 'settings:profile' %}" class="nav-link"> <span> {% translate "Edit Profile" %} </span></a>
+    {% endif %}
+{% endblock auth_nav %}
+
+{% block content %}
+    <main>
+        <section class="main-section">
+
+            <img src="{{object.avatar.url}}" alt="avatar">
+            <h2>{{object.name}}</h2>
+            <h4>{{object.member.username}}</h4>
+
+            <p name="description" id="profile-description">
+                {{object.description}}
+            </p>
+
+        </section>
+    </main>
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}

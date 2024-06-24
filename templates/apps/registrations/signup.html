@@ -1,0 +1,35 @@
+
+{% extends "base/base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %} {% translate "Sign Up" %}  {% endblock title %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static '' %}">
+
+{% endblock head %}
+
+{% block content %}
+    <section class="main-section">
+        <h1>{% translate "Sign Up Page" %} </h1>
+
+        <form action="." method="post">
+            {% csrf_token %}
+            {% include "indicators/form.html" %}
+
+            {{form.email}}
+            {{form.email2}}
+            {{form.username}}
+            {{form.password1}}
+            {{form.recaptcha}}
+
+            <a href="{% url 'account_login' %}"><p> {% translate "Already Have An Account?" %} </p> </a>
+            <button name="registration" type="submit" hx-disabled-elt="this"> {% translate "Sign Up" %} </button>
+        </form>
+
+    </section>
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}

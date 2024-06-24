@@ -1,0 +1,40 @@
+
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %} | Create Checkout {% endblock title %}
+
+{% block head %}
+{% endblock head %}
+
+{% block content %}
+    <main>
+        <section class="content-area">
+                <div class="main-context">
+                    <h2 class="main"> Buy and get different <span>  currencies </span> </h2>
+
+                    <form action="." method="post">
+                        {% csrf_token %}
+                        <div>
+                            {% for item in form.items %}
+                                {{item}}
+                            {% endfor %}
+                        </div>
+
+                        {{form.quantity}}
+                        {{form.payment_currency}}
+                        {{form.note}}
+
+                        <button name="buy" type="submit"> Buy </button>
+                        {% include "indicators/form.html" %}
+                    </form>
+                </div>
+        </section>
+    </main>
+
+
+{% endblock content %}
+
+
+{% block scripts %}
+{% endblock scripts %}

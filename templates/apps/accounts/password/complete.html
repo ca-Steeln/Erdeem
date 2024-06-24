@@ -1,0 +1,28 @@
+
+{% extends "base/base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %} | {% translate "Reset Password Completed" %} {% endblock title %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'apps/pages/reset.css' %}">
+{% endblock head %}
+
+{% block content %}
+
+    <main>
+        <section class="content-area">
+            <article class="content-card">
+                <h1>{% translate "Password reset complete!" %} </h1>
+                <p>{% translate "Your password has been set. You may go ahead and log in now." %} </p>
+                <p><a href="{% url 'account_login'%}"> {% translate "Sign in" %} </a></p>
+                <p><a href="{% url 'pages:home'%}"> {% translate "Home" %} </a></p>
+
+            </article>
+        </section>
+    </main>
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}

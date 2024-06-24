@@ -1,0 +1,8 @@
+
+{% load i18n %}
+
+<form action="{% url 'search:search' %}" method="get" id="main-search-form" hx-target="#main-search-body" hx-push-url="true">
+    {{ search_form.q }}
+    {{ search_form.category }}
+    <button type="submit">{% translate 'Search' %}</button>
+</form>

@@ -1,0 +1,4 @@
+{% load i18n %}
+{% autoescape off %}
+    {% translate "Account Verification Required On Sign up - Confirm Your Email" %}
+{% endautoescape %}

@@ -1,0 +1,33 @@
+
+{% extends "base/base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %} | {% translate "Balances" %} {% endblock title %}
+
+{% block head %}
+{% endblock head %}
+
+{% block auth_nav %}
+{% endblock auth_nav %}
+
+{% block content %}
+    <main>
+        <section class="content-area">
+            <div class="main-context">
+                <h2 class="main"> <span> {% translate "Balances" %} </span> </h2>
+
+                {% if balances_qs %}
+                    <ul>
+                        {% include 'apps/balances/partials/balances-list.html' %}
+                    </ul>
+                {% else %}
+                    <p> {% translate "It appears that no balances were found or made yet." %} </p>
+                {% endif %}
+
+            </div>
+
+        </section>
+    </main>
+
+{% endblock content %}
